@@ -1,6 +1,5 @@
 "use client";
 import React, { useId, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 interface SparklesProps {
   id?: string;
@@ -9,7 +8,7 @@ interface SparklesProps {
   maxSize?: number;
   particleDensity?: number;
   className?: string;
-  particleColor?: string;
+  particleColors?: string[];
 }
 
 export const SparklesCore = (props: SparklesProps) => {
@@ -20,7 +19,7 @@ export const SparklesCore = (props: SparklesProps) => {
     maxSize = 3,
     particleDensity = 100,
     className,
-    particleColor = "#FFF",
+    particleColors = ["#8b5cf6", "#ec4899", "#6366f1", "#a78bfa", "#f472b6"],
   } = props;
   
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -57,6 +56,7 @@ export const SparklesCore = (props: SparklesProps) => {
       size: number;
       speedX: number;
       speedY: number;
+      color: string;
     }> = [];
 
     for (let i = 0; i < particleDensity; i++) {
@@ -66,6 +66,7 @@ export const SparklesCore = (props: SparklesProps) => {
         size: Math.random() * (maxSize - minSize) + minSize,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
+        color: particleColors[Math.floor(Math.random() * particleColors.length)],
       });
     }
 
@@ -74,7 +75,7 @@ export const SparklesCore = (props: SparklesProps) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach((particle) => {
-        ctx.fillStyle = particleColor;
+        ctx.fillStyle = particle.color;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
@@ -91,7 +92,7 @@ export const SparklesCore = (props: SparklesProps) => {
 
     animate();
     return () => cancelAnimationFrame(animationFrameId);
-  }, [dimensions, particleDensity, minSize, maxSize, particleColor]);
+  }, [dimensions, particleDensity, minSize, maxSize, particleColors]);
 
   return (
     <canvas
