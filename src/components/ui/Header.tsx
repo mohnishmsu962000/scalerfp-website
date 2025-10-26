@@ -34,10 +34,10 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`flex items-center justify-between px-6 py-3 rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
+          className={`flex items-center justify-between px-8 py-3 rounded-4xl backdrop-blur-xl border transition-all duration-300 ${
             scrolled
-              ? 'bg-white/95 border-gray-200 shadow-xl'
-              : 'bg-white/80 border-white/60 shadow-lg'
+              ? 'bg-white/95 border-gray-200 shadow-lg'
+              : 'bg-white/80 border-gray-200 shadow-lg'
           }`}
         >
           <Link href="/" className="flex items-center gap-2 group">
