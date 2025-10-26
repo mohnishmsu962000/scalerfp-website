@@ -62,17 +62,17 @@ export default function Header() {
 
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="https://app.scalerfp.com/sign-in"
+              href="https://app.scalerfp.com/auth/sign-in"
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
             >
               <FiLogIn className="h-4 w-4" />
               Sign in
             </Link>
             <Link
-              href="https://app.scalerfp.com/sign-up"
+              href="https://app.scalerfp.com/auth/sign-up"
               className="group flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-medium rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              Get Started
+              Get Started Free
               <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
