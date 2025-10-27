@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FiZap, FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { FiTwitter, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { BsAppIndicator } from 'react-icons/bs';
 
 export default function Footer() {
   return (
@@ -8,9 +9,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <FiZap className="text-white h-5 w-5" />
-              </div>
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <BsAppIndicator className="text-white h-5 w-5" />
+            </div>
               <span className="text-xl font-medium">ScaleRFP</span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed">

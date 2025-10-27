@@ -5,6 +5,7 @@ import { FiArrowRight, FiZap, FiClock, FiCreditCard, FiCalendar } from 'react-ic
 import Link from 'next/link';
 import { useState } from 'react';
 import ScheduleDemoModal from '@/components/modals/ScheduleDemoModal';
+import { BsAppIndicator } from 'react-icons/bs';
 
 export default function Hero() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -79,7 +80,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
-                <FiZap className="h-4 w-4 text-purple-600" />
+                <BsAppIndicator className="text-purple-600 h-5 w-5" />
               </div>
               2 free RFPs
             </div>

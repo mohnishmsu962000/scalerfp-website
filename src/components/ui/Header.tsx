@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { BsAppIndicator } from 'react-icons/bs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiZap, FiDollarSign, FiHelpCircle, FiLogIn, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
@@ -42,7 +43,7 @@ export default function Header() {
         >
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <FiZap className="text-white h-5 w-5" />
+              <BsAppIndicator className="text-white h-5 w-5" />
             </div>
             <span className="text-xl font-medium text-gray-900">ScaleRFP</span>
           </Link>
