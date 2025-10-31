@@ -15,9 +15,9 @@ export const SparklesCore = (props: SparklesProps) => {
   const {
     id,
     background = "transparent",
-    minSize = 1,
-    maxSize = 3,
-    particleDensity = 100,
+    minSize = 30,
+    maxSize = 50,
+    particleDensity = 1000,
     className,
     particleColors = ["#8b5cf6", "#ec4899", "#6366f1", "#a78bfa", "#f472b6"],
   } = props;
