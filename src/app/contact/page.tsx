@@ -1,10 +1,44 @@
 'use client';
 
+import { useState } from 'react';
+import { toast } from 'sonner';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/sections/Footer';
-import { FiMail, FiMapPin, FiClock } from 'react-icons/fi';
+import { FiMail, FiClock } from 'react-icons/fi';
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success('Message sent! We\'ll get back to you within 24 hours.');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        toast.error('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -41,12 +75,15 @@ export default function ContactPage() {
 
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200">
             <h2 className="text-2xl font-medium mb-6">Send us a Message</h2>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                   <input
                     type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="John Doe"
                   />
@@ -55,6 +92,9 @@ export default function ContactPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                   <input
                     type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="john@company.com"
                   />
@@ -65,6 +105,9 @@ export default function ContactPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                 <input
                   type="text"
+                  required
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                   placeholder="How can we help?"
                 />
@@ -74,6 +117,9 @@ export default function ContactPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                 <textarea
                   rows={6}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
                   placeholder="Tell us more..."
                 />
@@ -81,9 +127,10 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-xl transition-all duration-300"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

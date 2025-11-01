@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCalendar, FiUser, FiMail, FiBriefcase } from 'react-icons/fi';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface ScheduleDemoModalProps {
   isOpen: boolean;
@@ -21,14 +22,31 @@ export default function ScheduleDemoModal({ isOpen, onClose }: ScheduleDemoModal
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Demo request:', formData);
-    alert('Thanks! We\'ll be in touch soon to schedule your demo.');
-    onClose();
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', company: '', message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: `Demo Request - ${formData.company}`,
+          message: `Company: ${formData.company}\n\n${formData.message || 'No additional message'}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success('Demo request sent! We\'ll contact you within 24 hours.');
+        setFormData({ name: '', email: '', company: '', message: '' });
+        onClose();
+      } else {
+        toast.error('Failed to send request. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Failed to send request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
