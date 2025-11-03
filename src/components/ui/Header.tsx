@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiZap, FiDollarSign, FiMessageCircle, FiLogIn, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
+import { FiGrid, FiTag, FiMessageCircle, FiLogIn, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => { 
+    const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
@@ -18,8 +18,8 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: '#features', label: 'Features', icon: FiZap },
-    { href: '#pricing', label: 'Pricing', icon: FiDollarSign },
+    { href: '#features', label: 'Features', icon: FiGrid },
+    { href: '#pricing', label: 'Pricing', icon: FiTag },
     { href: '/contact', label: 'Contact', icon: FiMessageCircle },
   ];
 
@@ -41,13 +41,10 @@ export default function Header() {
           }`}
         >
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <span className="text-white font-bold text-lg">S</span>
             </div>
-            <span className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">ScaleRFP</span>
+            <span className="text-xl font-semibold text-gray-900">ScaleRFP</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2">
