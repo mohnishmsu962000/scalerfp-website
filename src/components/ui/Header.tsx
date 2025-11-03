@@ -1,17 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BsAppIndicator } from 'react-icons/bs';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiZap, FiDollarSign, FiHelpCircle, FiLogIn, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
+import { FiZap, FiDollarSign, FiMessageCircle, FiLogIn, FiArrowRight, FiMenu, FiX } from 'react-icons/fi';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = () => { 
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
@@ -21,7 +20,7 @@ export default function Header() {
   const navLinks = [
     { href: '#features', label: 'Features', icon: FiZap },
     { href: '#pricing', label: 'Pricing', icon: FiDollarSign },
-    { href: '#faq', label: 'FAQ', icon: FiHelpCircle },
+    { href: '/contact', label: 'Contact', icon: FiMessageCircle },
   ];
 
   return (
@@ -41,11 +40,14 @@ export default function Header() {
               : 'bg-white/80 border-gray-200 shadow-lg'
           }`}
         >
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <BsAppIndicator className="text-white h-5 w-5" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
             </div>
-            <span className="text-xl font-medium text-gray-900">ScaleRFP</span>
+            <span className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">ScaleRFP</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2">
@@ -53,7 +55,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all"
               >
                 <link.icon className="h-4 w-4" />
                 {link.label}
@@ -64,14 +66,14 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="https://app.scalerfp.com/auth/sign-in"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all"
             >
               <FiLogIn className="h-4 w-4" />
               Sign in
             </Link>
             <Link
               href="https://app.scalerfp.com/auth/sign-up"
-              className="group flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-medium rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="group flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-indigo-200 hover:scale-105 transition-all duration-300"
             >
               Get Started Free
               <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -80,12 +82,12 @@ export default function Header() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+            className="md:hidden w-10 h-10 rounded-xl bg-gray-50 hover:bg-gray-100 flex items-center justify-center transition-colors"
           >
             {mobileMenuOpen ? (
-              <FiX className="h-5 w-5 text-gray-600" />
+              <FiX className="h-5 w-5 text-gray-700" />
             ) : (
-              <FiMenu className="h-5 w-5 text-gray-600" />
+              <FiMenu className="h-5 w-5 text-gray-700" />
             )}
           </button>
         </div>
@@ -105,7 +107,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all"
                     >
                       <link.icon className="h-5 w-5" />
                       {link.label}
@@ -116,7 +118,7 @@ export default function Header() {
                   <Link
                     href="https://app.scalerfp.com/auth/sign-in"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all"
                   >
                     <FiLogIn className="h-4 w-4" />
                     Sign in
@@ -124,7 +126,7 @@ export default function Header() {
                   <Link
                     href="https://app.scalerfp.com/auth/sign-up"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-medium rounded-xl hover:shadow-xl transition-all duration-300"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
                   >
                     Get Started Free
                     <FiArrowRight className="h-4 w-4" />
