@@ -48,7 +48,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-600 mb-12">
-            Have questions? We'd love to hear from you.
+            Have questions? We'd love to hear from you. To get in touch, please email at support@scalerfp.com or call at +91 7888274957
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
