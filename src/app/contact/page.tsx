@@ -59,7 +59,7 @@ export default function ContactPage() {
               <h3 className="text-lg font-medium mb-2">Email Us</h3>
               <p className="text-gray-600 mb-3">Our team typically responds within 24 hours</p>
               <a href="mailto:hello@scalerfp.com" className="text-purple-600 hover:text-purple-700 font-medium">
-                hello@scalerfp.com
+                support@scalerfp.com
               </a>
             </div>
 
