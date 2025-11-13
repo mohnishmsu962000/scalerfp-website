@@ -57,7 +57,7 @@ const plans = [
   },
   {
     name: 'Pro',
-    price: '1599',
+    price: '15999',
     description: 'For high-volume teams',
     features: [
       '100 RFPs per month',
