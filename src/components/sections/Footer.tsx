@@ -15,7 +15,7 @@ export default function Footer() {
               <span className="text-xl font-medium">ScaleRFP</span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed">
-              AI-powered RFP automation that helps you win more deals in less time.
+              AI-powered RFP automation that helps you win more deals in less time. To get in touch, please email at support@scalerfp.com or call at +91 7888274957.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600 text-sm">
-            © {new Date().getFullYear()} ScaleRFP. All rights reserved.
+            © {new Date().getFullYear()} Kindle Factory. All rights reserved.
           </p>
         </div>
       </div>

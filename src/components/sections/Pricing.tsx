@@ -23,7 +23,7 @@ const plans = [
   },
   {
     name: 'Starter',
-    price: '49',
+    price: '3999',
     description: 'Great for small teams',
     features: [
       '10 RFPs per month',
@@ -40,7 +40,7 @@ const plans = [
   },
   {
     name: 'Growth',
-    price: '99',
+    price: '7999',
     description: 'For growing teams',
     features: [
       '25 RFPs per month',
@@ -50,7 +50,6 @@ const plans = [
       'Instant AI revamp/rephrase',
       'All export formats',
       'Priority support',
-      'Custom branding',
     ],
     cta: 'Start Growth',
     href: 'https://app.scalerfp.com/auth/sign-up',
@@ -58,7 +57,7 @@ const plans = [
   },
   {
     name: 'Pro',
-    price: '199',
+    price: '1599',
     description: 'For high-volume teams',
     features: [
       '100 RFPs per month',
@@ -68,7 +67,6 @@ const plans = [
       'Instant AI revamp/rephrase',
       'All export formats',
       'Dedicated support',
-      'Custom branding',
     ],
     cta: 'Start Pro',
     href: 'https://app.scalerfp.com/auth/sign-up',
@@ -126,7 +124,7 @@ export default function Pricing() {
                   <h3 className="text-xl font-medium mb-2">{plan.name}</h3>
                   <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold">${plan.price}</span>
+                    <span className="text-2xl font-bold">INR {plan.price}</span>
                     {plan.price !== '0' && <span className="text-gray-600 text-sm">/mo</span>}
                   </div>
                 </div>
