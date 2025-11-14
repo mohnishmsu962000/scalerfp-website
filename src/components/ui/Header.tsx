@@ -19,7 +19,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '#features', label: 'Features', icon: FiGrid },
-    { href: '#pricing', label: 'Pricing', icon: FiTag },
+    { href: '/pricing', label: 'Pricing', icon: FiTag },
     { href: '/contact', label: 'Contact', icon: FiMessageCircle },
   ];
 
